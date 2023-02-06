@@ -1,0 +1,61 @@
+
+<html>
+  <head>
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+  <body>
+
+    <div id="mydiv"></div>
+
+    <script type="text/babel">
+      
+
+      function fun(){
+        alert("Hello")
+      }
+
+      function Sqr(){
+        const [num, setNum] = React.useState(5)
+
+        function getSqr(){
+          setNum(7)
+        }
+
+        return(
+          <>
+          <button onClick={getSqr}>Get Square</button>
+          <h1>Square of {num} is {num * num}</h1>
+          </>
+        )
+      }
+
+      function Add(props){
+        const {x,y} = props;
+        const sum = x + y;
+        console.log(sum)
+        return(
+            <h1>{x} + {y} = {sum}</h1>
+        )
+      }
+
+      function Hello() {
+        return(
+            <>
+            <h1>Hello World from React!</h1>
+            <Sqr />
+            <Add x = {6} y = {3} />
+            <Add x = {8} y = {7} />
+            <Add x = {2} y = {10} />
+            <button onClick={fun}>Click me</button>
+            
+            </>
+            );
+      }
+      
+      ReactDOM.render(<Hello />, document.getElementById('mydiv'))
+    </script>
+
+  </body>
+</html>
