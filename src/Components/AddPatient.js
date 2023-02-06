@@ -14,7 +14,7 @@ export default function AddPatient() {
 
   const addPatient = () => {
 
-    Axios.post('http://localhost:3001/create', {
+    Axios.post('https://dentist-api.onrender.com/create', {
       name: name,
       contact: contact,
       address: address

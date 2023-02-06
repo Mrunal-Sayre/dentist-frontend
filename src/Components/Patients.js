@@ -9,7 +9,7 @@ export default function Patients() {
 
   useEffect(() => {
     const getData = () => {
-      Axios.get('http://localhost:3001/listing').then((res) => {
+      Axios.get('https://dentist-api.onrender.com/listing').then((res) => {
         // console.log(res.data)
         setData(res.data)
       });
@@ -19,7 +19,7 @@ export default function Patients() {
   }, []);
 
   const deleteDetails = (id) => {
-    Axios.delete(`http://localhost:3001/delete/${id}`)
+    Axios.delete(`https://dentist-api.onrender.com/delete/${id}`)
       .then(res => {
         const arr = data.filter(item => item.id !== id);
         setData(arr);

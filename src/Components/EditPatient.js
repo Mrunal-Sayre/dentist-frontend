@@ -22,7 +22,7 @@ export default function EditPatient(props) {
   const editDetails = (e) => {
     e.preventDefault();
 
-    Axios.put(`http://localhost:3001/update/${id}`, {
+    Axios.put(`https://dentist-api.onrender.com/update/${id}`, {
       name: name,
       contact: contact,
       address: address
