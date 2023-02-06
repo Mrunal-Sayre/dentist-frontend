@@ -12,8 +12,8 @@ export default function AddPatient() {
   const [address, setAddress] = useState('');
   const [contact, setContact] = useState('');
 
-  const addPatient = () => {
-
+  const addDetails = (e) => {
+    e.preventDefault();
     Axios.post('https://dentist-api.onrender.com/create', {
       name: name,
       contact: contact,
@@ -80,7 +80,7 @@ export default function AddPatient() {
                   </div>
                   <div className="text-end">
                     <div className="submit-sec">
-                      <button type="submit" className="btn btn-primary" onClick={addPatient}>Submit</button>
+                      <button type="submit" className="btn btn-primary" onClick={addDetails}>Submit</button>
                       <Link to='/'>
                         <button type="submit" className="btn btn-secondary" style={{ marginLeft: '20px' }}>
                           Cancel
