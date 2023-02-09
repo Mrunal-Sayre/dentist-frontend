@@ -37,7 +37,7 @@ export default function EditPatient(props) {
     e.preventDefault();
     // console.log(name + contact + address + email + age + disability + gender + id);
     
-    Axios.put(`https://dentist-api.onrender.com/${id}`, {
+    Axios.put(`https://dentist-api.onrender.com/update/${id}`, {
       name: name,
       contact: contact,
       address: address,
