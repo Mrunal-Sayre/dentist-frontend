@@ -26,12 +26,10 @@ export default function Patients() {
       })
   }
 
-  const setToLocalStorage = (id, name, address, contact) => {
-    localStorage.setItem("id", id);
-    localStorage.setItem("name", name);
-    localStorage.setItem("address", address);
-    localStorage.setItem("contact", contact);
-
+  const setToLocalStorage = (val) => {
+    console.log(val)
+    localStorage.setItem("id", val.id);
+    localStorage.setItem("data", JSON.stringify(val));
   }
 
   return (
@@ -70,7 +68,8 @@ export default function Patients() {
                         <th>ID</th>
                         <th>Patient Name</th>
                         <th>Address</th>
-                        <th>Contact</th>
+                        <th>Age</th>
+                        <th>Gender</th>
                         <th>Action</th>
                       </tr>
                     </thead>
@@ -83,14 +82,16 @@ export default function Patients() {
                               <td>{val.id}</td>
                               <td>{val.name}</td>
                               <td>{val.address}</td>
-                              <td>{val.contact}</td>
+                              <td>{val.age}</td>
+                              <td>{val.gender}</td>
+
                               <td>
                                 <div style={{ width: "35px", display: "inline", marginRight: "10px" }}>
                                   <Link
                                     to='/edit'
                                   // state={{data:data, id: val.id}}
                                   >
-                                    <img src="https://cdn-icons-png.flaticon.com/512/3597/3597075.png" onClick={() => setToLocalStorage(val.id, val.name, val.address, val.contact)} style={{ height: "20px", width: "20px" }} />
+                                    <img src="https://cdn-icons-png.flaticon.com/512/3597/3597075.png" onClick={() => setToLocalStorage(val)} style={{ height: "20px", width: "20px" }} />
                                   </Link>
                                 </div>
                                 <div style={{ width: "35px", display: "inline" }}>

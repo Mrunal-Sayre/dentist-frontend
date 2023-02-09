@@ -11,13 +11,22 @@ export default function AddPatient() {
   const [name, setName] = useState('');
   const [address, setAddress] = useState('');
   const [contact, setContact] = useState('');
+  const [age, setAge] = useState('');
+  const [email, setEmail] = useState('');
+  const [disability, setDisability] = useState('');
+  const [gender, setGender] = useState('');
 
-  const addDetails = (e) => {
-    e.preventDefault();
+
+  const addPatient = (e) => {
+      e.preventDefault();
     Axios.post('https://dentist-api.onrender.com/create', {
       name: name,
       contact: contact,
-      address: address
+      address: address,
+      email:email,
+      age: age,
+      disability: disability,
+      gender: gender
     }).then((res) => {
       console.log(res);
       navigate("/")
@@ -50,13 +59,17 @@ export default function AddPatient() {
                         <input type="text" className="form-control" onChange={(e) => setAddress(e.target.value)} />
                       </div>
                       <div className="form-group">
+                        <label>Age</label>
+                        <input type="text" className="form-control" onChange={(e) => setAge(e.target.value)} />
+                      </div>
+                      <div className="form-group">
                         <label className="d-block">Gender:</label>
                         <div className="form-check form-check-inline">
-                          <input className="form-check-input" type="radio" name="gender" id="gender_male" defaultValue="option1" />
+                          <input className="form-check-input" type="radio" name="gender" id="gender_male" defaultValue="male" onChange={(e) => setGender(e.target.value)} />
                           <label className="form-check-label" htmlFor="gender_male">Male</label>
                         </div>
                         <div className="form-check form-check-inline">
-                          <input className="form-check-input" type="radio" name="gender" id="gender_female" defaultValue="option2" />
+                          <input className="form-check-input" type="radio" name="gender" id="gender_female" defaultValue="female" onChange={(e) => setGender(e.target.value)} />
                           <label className="form-check-label" htmlFor="gender_female">Female</label>
                         </div>
                       </div>
@@ -67,22 +80,21 @@ export default function AddPatient() {
                         <input type="text" className="form-control" onChange={(e) => setContact(e.target.value)} />
                       </div>
                       <div className="form-group">
-                        <label>Blood Group</label>
-                        <select className="form-select">
-                          <option>Select</option>
-                          <option value={1}>A+</option>
-                          <option value={2}>O+</option>
-                          <option value={3}>B+</option>
-                          <option value={4}>AB+</option>
-                        </select>
+                        <label>Email</label>
+                        <input type="text" className="form-control" onChange={(e) => setEmail(e.target.value)} />
                       </div>
+                      <div className="form-group">
+                        <label>Disability</label>
+                        <input type="text" className="form-control" onChange={(e) => setDisability(e.target.value)} />
+                      </div>
+                     
                     </div>
                   </div>
                   <div className="text-end">
                     <div className="submit-sec">
-                      <button type="submit" className="btn btn-primary" onClick={addDetails}>Submit</button>
+                      <button type="submit" className="btn btn-primary" onClick={addPatient}>Submit</button>
                       <Link to='/'>
-                        <button type="submit" className="btn btn-secondary" style={{ marginLeft: '20px' }}>
+                        <button type="" className="btn btn-secondary" style={{ marginLeft: '20px' }}>
                           Cancel
                         </button>
                       </Link>
